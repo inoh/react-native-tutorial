@@ -8,17 +8,27 @@ import {
   View,
 } from 'react-native';
 
-interface SampleProps {
+import {
+  NavigationScreenConfigProps,
+} from 'react-navigation';
+
+interface SampleViewProps {
   name: string;
   backgroundColor: string;
 }
 
-interface SampleState {
+interface SampleViewState {
   text: string;
 }
 
-class Sample extends React.Component<SampleProps, SampleState> {
-  public constructor(props: SampleProps) {
+class SampleView extends React.Component<SampleViewProps, SampleViewState> {
+  static navigationOptions = ({ screenProps }: NavigationScreenConfigProps) => {
+    return {
+      title: screenProps.name,
+    }
+  };
+
+  public constructor(props: SampleViewProps) {
     super(props);
 
     this.state = {
@@ -58,4 +68,4 @@ class Sample extends React.Component<SampleProps, SampleState> {
   }
 }
 
-export default Sample;
+export default SampleView;
